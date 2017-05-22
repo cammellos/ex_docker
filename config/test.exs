@@ -1,2 +1,2 @@
 use Mix.Config
-config :ex_docker, :uri, System.get_env("DOCKER_HOST") || "http+unix://%2fvar%2frun%2fdocker.sock"
+config :ex_docker, :uri, System.get_env("DOCKER_HOST") || "unix:///var/run/docker.sock"

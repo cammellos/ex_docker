@@ -1,7 +1,7 @@
 defmodule ExDocker.Api.ContainerTest do
   use ExUnit.Case
 
-  @host "#{Application.get_env(:ex_docker, :uri)}"
+  @host ExDocker.Helpers.ConfigHelper.api_url
 
   setup_all do
     {:ok, _body} = create_image()

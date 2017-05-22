@@ -2,7 +2,7 @@ defmodule ExDocker.Api.ImageTest do
   use ExUnit.Case
   import PathHelpers
 
-  @host "#{Application.get_env(:ex_docker, :uri)}"
+  @host ExDocker.Helpers.ConfigHelper.api_url
 
   defp parse_create_image_response(response) do
     %{"stream" => st} = List.first(response)

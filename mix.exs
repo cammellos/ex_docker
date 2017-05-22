@@ -32,7 +32,7 @@ defmodule ExDocker.Mixfile do
     [
       {:ibrowse, "~> 4.2"},
       {:httpoison, "~> 0.11.0"},
-      {:mock, "~> 0.1", only: :test},
+      {:mock, "~> 0.2.0", only: :test},
       {:poison, "~> 2.2.0"}
     ]
   end

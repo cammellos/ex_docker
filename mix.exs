@@ -30,10 +30,10 @@ defmodule ExDocker.Mixfile do
 
   defp deps do
     [
-      {:ibrowse, "~> 4.2"},
       {:httpoison, "~> 0.11.0"},
+      {:poison, "~> 2.2.0"},
       {:mock, "~> 0.2.0", only: :test},
-      {:poison, "~> 2.2.0"}
+      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
     ]
   end
 end

@@ -14,7 +14,6 @@ defmodule ExDocker.Api.ContainerTest do
 
     {:ok, _body, 204} = start_container(stop_cid)
 
-
     {:ok, _} = wait_for_containers([cid, stop_cid])
 
     on_exit("stop_containers", fn ->

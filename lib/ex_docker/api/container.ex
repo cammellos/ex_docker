@@ -102,6 +102,12 @@ defmodule ExDocker.Api.Container do
     handle_response(response)
   end
 
+  def wait(host, id, opts \\ []) do
+    response = HTTP.post(host <> "/containers/#{id}/wait")
+    handle_response(response)
+  end
+
+
   @doc """
   Delete a container
 

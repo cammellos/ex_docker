@@ -3,7 +3,7 @@ defmodule ExDocker.Client.Containers do
   @host ExDocker.Helpers.ConfigHelper.api_url
 
   def run(image, opts \\ []) do
-    {:ok, cid} = pull_and_create_container(image)
+    {:ok, cid} = create(image, opts)
 
     ExDocker.Api.Container.start(@host, cid)
 
@@ -19,17 +19,14 @@ defmodule ExDocker.Client.Containers do
     end
   end
 
-  defp pull_and_create_container(image) do
-    case ExDocker.Api.Container.create(@host, %{"image" => image, "cmd" => ["echo", "hello"]}) do
+  def create(image, opts \\ []) do
+    case ExDocker.Api.Container.create(@host, Enum.into(opts, %{"image" => image})) do
       {:ok, %{"Id" => cid}, 201} -> {:ok, cid}
       {:ok, _, 404} ->
         {:ok, _response} = ExDocker.Api.Image.create(@host, %{"fromImage" => image})
         {:ok, %{"Id" => cid}, 201} = ExDocker.Api.Container.create(@host, %{"image" => image, "cmd" => ["echo", "hello"]})
         {:ok, cid}
     end
-  end
-
-  def create do
   end
 
   def get do
